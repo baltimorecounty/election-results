@@ -470,6 +470,7 @@ var ElectionAjaxService = (function($, ElectionParams) {
     )
       displayMobileView();
   });
+
   $(document).on("change", ".contest-filter-select", function() {
     var $this = $(this);
     var $contests = $(".contest");
@@ -483,6 +484,7 @@ var ElectionAjaxService = (function($, ElectionParams) {
     $contests.hide();
     $activeContest.show();
   });
+
   $(document).on("click", "button.display-button", function(e) {
     e.preventDefault();
     var type = setDisplayButton($(this));
@@ -490,6 +492,7 @@ var ElectionAjaxService = (function($, ElectionParams) {
     else showChart();
     setResultsPreference(type);
   });
+
   $(document).on("click", ".notify", function() {
     getElectionData({
       success: function(resp) {
