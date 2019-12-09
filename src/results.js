@@ -504,6 +504,7 @@ var ElectionAjaxService = (function($, ElectionParams) {
       error: getElectionDataError
     });
   });
+
   Handlebars.registerHelper("formatTableHeading", function(contestName) {
     contestName = contestName.toLowerCase();
     if (
@@ -513,15 +514,18 @@ var ElectionAjaxService = (function($, ElectionParams) {
       return "Result";
     return "Candidate";
   });
+
   Handlebars.registerHelper("selectedValue", function(contestId) {
     var selectedId = parseInt(getContestPreference());
     if (selectedId === contestId) return "selected";
   });
+
   Handlebars.registerHelper("toProperCase", function(property) {
     if (property.indexOf("U.S.") > -1)
       return "U.S." + toProperCase(property.replace("U.S.", ""));
     return toProperCase(property);
   });
+
   Handlebars.registerHelper("formatNumber", function(num) {
     return num.toLocaleString();
   });
