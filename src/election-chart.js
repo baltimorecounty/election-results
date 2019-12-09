@@ -1,4 +1,4 @@
-var ElectionChart = (function(window, undefined, $, Chart) {
+window.ElectionChart = (function(window, undefined, $, Chart) {
   var chartOptions = {
     scaleBeginAtZero: true,
     graphMin: 0,

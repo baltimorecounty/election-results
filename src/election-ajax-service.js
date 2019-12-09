@@ -1,4 +1,4 @@
-var ElectionAjaxService = (function($, ElectionParams) {
+window.ElectionAjaxService = (function($, ElectionParams) {
   return {
     ajax: function(ajaxProps) {
       $.ajax({
