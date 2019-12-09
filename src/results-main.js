@@ -199,7 +199,7 @@
     var html = template(resp);
     setElectionInfo(resp.AllElections[0]);
     $lists.html(html);
-    if ($contestFilter.html().indexOf("select") === -1) {
+    if ($contestFilter.html().indexOf("select") === -1 && resp.AllElections[0].contests.length > 1) {
       var filterTemplate = handlebars.compile(selectTemplate);
       var selectHtml = filterTemplate(resp);
       $contestFilter.append(selectHtml);
