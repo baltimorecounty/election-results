@@ -2,9 +2,12 @@
   "name": "election-results",
   "version": "1.0.0",
   "description": "Display Live Election Results for Baltimore County",
-  "main": "index.js",
+  "main": "src/results.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "parcel src/results.js",
+    "build": "parcel build src/results.js",
+    "start": "parcel index.html"
   },
   "repository": {
     "type": "git",
@@ -15,5 +18,8 @@
   "bugs": {
     "url": "https://github.com/baltimorecounty/election-results/issues"
   },
-  "homepage": "https://github.com/baltimorecounty/election-results#readme"
+  "homepage": "https://github.com/baltimorecounty/election-results#readme",
+  "devDependencies": {
+    "parcel-bundler": "^1.12.4"
+  }
 }
