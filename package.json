@@ -1,0 +1,19 @@
+{
+  "name": "election-results",
+  "version": "1.0.0",
+  "description": "Display Live Election Results for Baltimore County",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/baltimorecounty/election-results.git"
+  },
+  "author": "Baltimore County Developers",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/baltimorecounty/election-results/issues"
+  },
+  "homepage": "https://github.com/baltimorecounty/election-results#readme"
+}
