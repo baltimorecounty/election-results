@@ -149,9 +149,10 @@
 
     const getContestsFromResponse = resp => {
         const election = getElectionFromResponse(resp);
-        return {
-            contests =[]
+        const {
+            contests = []
         } = election;
+        return contests;
     };
 
     var getParameterByName = function (name) {
@@ -215,6 +216,7 @@
         setElectionInfo(getElectionFromResponse(resp));
         $lists.html(html);
         const hasOnly1Contest = (getContestsFromResponse(resp).length == 1);
+        console.log(hasOnly1Contest);
         if ($contestFilter.html().indexOf("select") === -1 && !hasOnly1Contest) {
             var filterTemplate = handlebars.compile(selectTemplate);
             var selectHtml = filterTemplate(resp);
