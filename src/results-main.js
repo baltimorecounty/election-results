@@ -116,7 +116,7 @@
   var createCharts = function(resp) {
     if (isCanvasSupported()) {
       $(".display-options").addClass("display-inline");
-      var contests = resp.AllElections[0].contests;
+      const contests = getContestsFromResponse(resp);
       charts = arrayMap(contests, makeElectionChart);
       return charts;
     }
@@ -138,6 +138,17 @@
   };
 
   var getElectionData = ElectionAjaxService.ajax;
+
+  const getElectionFromResponse = resp => {
+    const { AllElections = [] } = resp;
+    return AllElections.length > 0 ? AllElections[0] : [];
+  };
+
+  const getContestsFromResponse = resp => {
+    const election = getElectionFromResponse(resp);
+    const { contests = [] } = election;
+    return contests;
+  };
 
   var getParameterByName = function(name) {
     name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
@@ -197,9 +208,10 @@
   var createLists = function(resp) {
     var template = handlebars.compile(listTemplate);
     var html = template(resp);
-    setElectionInfo(resp.AllElections[0]);
+    setElectionInfo(getElectionFromResponse(resp));
     $lists.html(html);
-    if ($contestFilter.html().indexOf("select") === -1) {
+    const hasOnly1Contest = getContestsFromResponse(resp).length == 1;
+    if ($contestFilter.html().indexOf("select") === -1 && !hasOnly1Contest) {
       var filterTemplate = handlebars.compile(selectTemplate);
       var selectHtml = filterTemplate(resp);
       $contestFilter.append(selectHtml);
@@ -238,7 +250,7 @@
   };
 
   var pollCallback = function(resp) {
-    var election = resp.AllElections[0];
+    var election = getElectionFromResponse(resp);
     var pageLastUpdated = $.trim(
       $electionUpdateDate
         .text()
