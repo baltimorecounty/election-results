@@ -116,8 +116,13 @@
   var createCharts = function(resp) {
     if (isCanvasSupported()) {
       $(".display-options").addClass("display-inline");
-      var contests = resp.AllElections[0].contests;
-      charts = arrayMap(contests, makeElectionChart);
+	  const {
+		  AllElections = []
+	  } = resp;
+	  const {
+		  contests = []
+	  } = AllElections.length > 0 ? AllElections[0] : [];
+	  charts = arrayMap(contests, makeElectionChart);
       return charts;
     }
   };
@@ -197,9 +202,16 @@
   var createLists = function(resp) {
     var template = handlebars.compile(listTemplate);
     var html = template(resp);
-    setElectionInfo(resp.AllElections[0]);
+	const {
+	  AllElections = []
+	} = resp;
+	const {
+	  contests = []
+	} = AllElections.length > 0 ? AllElections[0] : [];
+    setElectionInfo(AllElections[0]);
     $lists.html(html);
-    if ($contestFilter.html().indexOf("select") === -1 && resp.AllElections[0].contests.length > 1) {
+	const hasOnly1Contest = (contests.length == 1);
+    if ($contestFilter.html().indexOf("select") === -1 && !hasOnly1Contest) {
       var filterTemplate = handlebars.compile(selectTemplate);
       var selectHtml = filterTemplate(resp);
       $contestFilter.append(selectHtml);
@@ -238,7 +250,13 @@
   };
 
   var pollCallback = function(resp) {
-    var election = resp.AllElections[0];
+	const {
+		AllElections = []
+	} = resp;
+	const {
+		contests = []
+	} = AllElections.length > 0 ? AllElections[0] : [];
+    var election = AllElections[0];
     var pageLastUpdated = $.trim(
       $electionUpdateDate
         .text()
