@@ -1,5 +1,6 @@
 import { Config } from "@baltimorecounty/javascript-utilities";
 const { getValue, setConfig } = Config;
+
 const configValues = {
   local: {
     dataUrl: "https://develectionresults.baltimorecountymd.gov/data"
@@ -14,6 +15,7 @@ const configValues = {
     dataUrl: "https://electionresults.baltimorecountymd.gov/data"
   }
 };
+
 setConfig(configValues);
 
 window.ElectionParams = (function() {
