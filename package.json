@@ -21,5 +21,8 @@
   "homepage": "https://github.com/baltimorecounty/election-results#readme",
   "devDependencies": {
     "parcel-bundler": "^1.12.4"
+  },
+  "dependencies": {
+    "@baltimorecounty/javascript-utilities": "^1.0.5"
   }
 }

@@ -190,9 +190,7 @@
   };
 
   var getAdjustedDate = function(dateString) {
-    return moment(dateString)
-      .subtract({ hours: 5 })
-      .format("MM/DD/YYYY h:mm:ss A");
+    return moment(dateString).format("MM/DD/YYYY h:mm:ss A");
   };
 
   var setElectionUpdateDate = function(election) {
